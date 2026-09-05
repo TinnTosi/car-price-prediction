@@ -33,15 +33,6 @@ def _create_mileage_per_year(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-# Convert engine volume from cm3 to liters
-def _create_engine_volume_liters(df: pd.DataFrame) -> pd.DataFrame:
-
-    df = df.copy()
-
-    df["engine_volume_liters"] = df["volume_cm3"] / 1000
-
-    return df
-
 
 # Connect all feature engineering operations
 def feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
@@ -50,7 +41,6 @@ def feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
         df
         .pipe(_create_car_age)
         .pipe(_create_mileage_per_year)
-        .pipe(_create_engine_volume_liters)
         .reset_index(drop=True)
     )
 
