@@ -1,7 +1,7 @@
 import joblib
 import pandas as pd
 
-from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 
@@ -44,8 +44,8 @@ model = Pipeline(
         # Apply preprocessing to the input features
         ("preprocessor", build_preprocessor()),
 
-        # Train a Linear Regression model
-        ("regressor", LinearRegression()),
+        # Train a RandomForestRegressor model
+        ("regressor", RandomForestRegressor(random_state=42)),
     ]
 )
 
